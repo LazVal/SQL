@@ -338,7 +338,7 @@ values (1,7,2),
 	 (40,42,4);
 ```
 
-### HM_1
+### HM_2
 ```
 CREATE TABLE public.students (
 	id serial4 NOT NULL,
