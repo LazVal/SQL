@@ -86,9 +86,9 @@ values ('Кузнецов Александр'),
 ('Шульгина Ева');
 ------------------------------------------------------------------------------------------------------
 
-Òàáëèöà salary
+Таблица salary
 
-3)	Ñîçäàòü òàáëèöó salary
+3)	Создать таблицу salary
 - id. Serial  primary key,
 - monthly_salary. Int, not null
 create table salary(
@@ -96,7 +96,7 @@ id serial primary key,
 monthly_salary int not null
 );
 ------------------------------------------------------------------------------------------------------
-4)	Íàïîëíèòü òàáëèöó salary 15 ñòðîêàìè:
+4)	Наполнить таблицу salary 15 строками:
 - 1000
 - 1100
 - 1200
@@ -132,9 +132,9 @@ values (1000),
 	 (2500);
 ------------------------------------------------------------------------------------------------------
 
-Òàáëèöà employee_salary
+Таблица employee_salary
 
-5)	Ñîçäàòü òàáëèöó employee_salary
+5)	Создать таблицу employee_salary
 - id. Serial  primary key,
 - employee_id. Int, not null, unique
 - salary_id. Int, not null
@@ -144,8 +144,8 @@ employee_id int unique not null,
 salary_id int not null
 );
 ------------------------------------------------------------------------------------------------------
-6)	Íàïîëíèòü òàáëèöó employee_salary 40 ñòðîêàìè:
-- â 10 ñòðîê èç 40 âñòàâèòü íåñóùåñòâóþùèå employee_id
+6)	Наполнить таблицу employee_salary 40 строками:
+- в 10 строк из 40 вставить несуществующие employee_id
 
 id	employee_id	salary_id
 1	3	7
@@ -204,9 +204,9 @@ values (3,7),
 	 (110,5);
 ------------------------------------------------------------------------------------------------------	
 
-Òàáëèöà roles
+Таблица roles
 
-7)	Ñîçäàòü òàáëèöó roles
+7)	Создать таблицу roles
 - id. Serial  primary key,
 - role_name. int, not null, unique
 create table roles(
@@ -214,55 +214,41 @@ id Serial primary key,
 role_name int unique not null
 );
 ------------------------------------------------------------------------------------------------------
-8)	Ïîìåíÿòü òèï ñòîëáà role_name ñ int íà varchar(30)
+8)	Поменять тип столба role_name с int на varchar(30)
 ALTER TABLE roles
 ALTER COLUMN role_name type VARCHAR(30);
 ------------------------------------------------------------------------------------------------------
-9)	Íàïîëíèòü òàáëèöó roles 20 ñòðîêàìè:
+9)	Наполнить таблицу roles 20 строками:
 insert into roles (id, role_name)
-values (1, 'Junior Python developer'),
-		(2, 'Middle Python developer'),
-		(3, 'Senior Python developer'),
-		(4, 'Junior Java developer'),
-		(5, 'Middle Java developer'),
-		(6, 'Senior Java developer'),
-		(7, 'Junior JavaScript developer'),
-		(8, 'Middle JavaScript developer'),
-		(9, 'Senior JavaScript developer'),
-		(10, 'Junior Manual QA engineer'),
-		(11, 'Middle Manual QA engineer'),
-		(12, 'Senior Manual QA engineer'),
-		(13, 'Project Manager');
+values ('Junior Python developer'),
+			('Middle Python developer'),
+			('Senior Python developer'),
+			('Junior Java developer'),
+			('Middle Java developer'),
+			('Senior Java developer'),
+			('Junior JavaScript developer'),
+			('Middle JavaScript developer'),
+			('Senior JavaScript developer'),
+			('Junior Manual QA engineer'),
+			('Middle Manual QA engineer'),
+			('Senior Manual QA engineer'),
+			('Project Manager'),
+			('Designer'),
+			('HR'),
+			('CEO'),
+			('Sales manager'),
+			('Junior Automation QA engineer'),
+			('Middle Automation QA engineer'),
+			('Senior Automation QA engineer');
 
-id	role_name
-1	Junior Python developer
-2	Middle Python developer
-3	Senior Python developer
-4	Junior Java developer
-5	Middle Java developer
-6	Senior Java developer
-7	Junior JavaScript developer
-8	Middle JavaScript developer
-9	Senior JavaScript developer
-10	Junior Manual QA engineer
-11	Middle Manual QA engineer
-12	Senior Manual QA engineer
-13	Project Manager
-14	Designer
-15	HR
-16	CEO
-17	Sales manager
-18	Junior Automation QA engineer
-19	Middle Automation QA engineer
-20	Senior Automation QA engineer
 ------------------------------------------------------------------------------------------------------
 
-Òàáëèöà roles_employee
+Таблица roles_employee
 
-10)	Ñîçäàòü òàáëèöó roles_employee
+10)	Создать таблицу roles_employee
 - id. Serial  primary key,
-- employee_id. Int, not null, unique (âíåøíèé êëþ÷ äëÿ òàáëèöû employees, ïîëå id)
-- role_id. Int, not null (âíåøíèé êëþ÷ äëÿ òàáëèöû roles, ïîëå id)
+- employee_id. Int, not null, unique (внешний ключ для таблицы employees, поле id)
+- role_id. Int, not null (внешний ключ для таблицы roles, поле id)
 create table roles_employee(
 id Serial primary key,
 employee_id int unique not null,
@@ -273,7 +259,7 @@ foreign key (role_id)
 	references roles(id)	
 );
 ------------------------------------------------------------------------------------------------------
-11)	Íàïîëíèòü òàáëèöó roles_employee 40 ñòðîêàìè:
+11)	Наполнить таблицу roles_employee 40 строками:
 id	employee_id	role_id
 1	7	2
 2	20	4
